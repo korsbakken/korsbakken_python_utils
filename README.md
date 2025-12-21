@@ -13,10 +13,10 @@ even respond, depends on the time available.
 
 ## License
 
-This code is licensed under a GPL license, which requires you to license any
-modifications you make under the same open license. If you need to use it for
-purposes where that is a showstopper, get in touch to see if we can work
-something out.
+This code is licensed under a GPL license (see [LICENSE](./LICENSE)), which
+requires you to license any modifications you make under the same open license.
+If you need to use it for purposes where that is a showstopper, get in touch to
+see if we can work something out.
 
 Note that there are no warranties or guarantees that this code will be safe,
 secure or fulfill any particular function, and I assume no liability for its
