@@ -1,0 +1,19 @@
+[project]
+name = "korsbakken-python-utils"
+version = "0.1.0"
+description = "Python utility code and helper functions by and for myself"
+readme = "README.md"
+license = "AGPL-3.0-or-later"
+license-files = [
+    "LICENSE",
+    "README.md"
+]
+authors = [
+    { name = "Jan Ivar Korsbakken", email = "janko@cicero.oslo.no" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
