@@ -46,7 +46,12 @@ class DataObject(MutableMapping):
     ###END DataObject.__init__
 
     def __getitem__(self, key: str) -> tp.Any:
-        return getattr(self, key)
+        # If __getitem__ is called, it means that the key is being accessed like
+        # a dictionary key rather than an attribute. We should therefore use
+        # self.__dict__.__getitem__ rather than getattr(self, ...), so that a
+        # KeyError is raised rather than an AttributeError if they key does not
+        # exist.
+        return self.__dict__[key]
     ###END DataObject.__getitem__
 
     def __setitem__(self, key: str, value: tp.Any) -> None:
@@ -66,10 +71,10 @@ class DataObject(MutableMapping):
     ###END DataObject.__len__
 
     def __repr__(self) -> str:
-        attrs: str = '\n,    '.join(
+        attrs: str = ',\n    '.join(
             f"{key}={repr(value)}" for key, value in self.__dict__.items()
         )
-        return f'{self.__class__.__name__}(\n{attrs}\n)'
+        return f'{self.__class__.__name__}(\n    {attrs}\n)'
     ###END DataObject.__repr__
 
     def __str__(self) -> str:

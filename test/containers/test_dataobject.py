@@ -113,13 +113,13 @@ class TestDataObject:
     def test_attribute_error_missing_key(self) -> None:
         """Test accessing a missing key raises AttributeError/KeyError appropriately."""
         obj: DataObject = DataObject()
+        # When accessing as attribute, should raise AttributeError.
         with pytest.raises(AttributeError):
             _ = obj.missing_attr
         
-        # Since it inherits from MutableMapping, __getitem__ usually raises KeyError,
-        # but the implementation delegates to getattr, which raises AttributeError.
-        # Let's verify the specific behavior of this implementation.
-        with pytest.raises(AttributeError):
+        # Since it inherits from MutableMapping, __getitem__ should raise
+        # KeyError when accessed like a dictionary.
+        with pytest.raises(KeyError):
             _ = obj['missing_key']
 
     def test_overwrite_attributes(self) -> None:
