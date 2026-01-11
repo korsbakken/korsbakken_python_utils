@@ -6,6 +6,11 @@ DataObject
     A basic object class that can be initialized with any set of attributes as
     keyword arguments, provides a readable string representation, and allows
     setting and getting attributes using dictionary-like syntax.
+UniformTypeDataObject
+    A subclass of DataObject that ensures all attributes are of the same type.
+    This subclass does not validate types, but acts as a generic container that
+    allows static type checkers to recognize all the attributes as being of a
+    specifi, uniform type.
 """
 from collections.abc import (
     Iterator,
@@ -124,3 +129,45 @@ class DataObject(MutableMapping):
     ###END DataObject.to_tuples
 
 ###END class DataObject
+
+
+class UniformTypeDataObject[_T](DataObject):
+    """A generic subclass of DataObject with uniformly typed attributes.
+
+    This subclass does not enforce type checking at runtime, but serves as a
+    generic container that allows static type checkers to recognize all the
+    attributes as being of a uniform type.
+    """
+    def __init__(self, **kwargs: _T) -> None:
+        """
+        Parameters
+        ----------
+        **kwargs : _T
+            Arbitrary keyword arguments to set as attributes of the object.
+            All values should be of the same type _T.
+        """
+        super().__init__(**kwargs)
+    ###END UniformTypeDataObject.__init__
+
+    def __setitem__(self, key: str, value: _T) -> None:
+        setattr(self, key, value)
+    ###END UniformTypeDataObject.__setitem__
+
+    def __getitem__(self, key: str) -> _T:
+        return self.__dict__[key]
+    ###END UniformTypeDataObject.__getitem__
+
+    def to_dict(
+            self,
+            copy: bool = True,
+    ) -> dict[str, _T]:
+        return super().to_dict(copy=copy)
+    ###END UniformTypeDataObject.to_dict
+    to_dict.__doc__ = DataObject.to_dict.__doc__
+
+    def to_tuples(self) -> list[tuple[str, _T]]:
+        return super().to_tuples()
+    ###END UniformTypeDataObject.to_tuples
+    to_tuples.__doc__ = DataObject.to_tuples.__doc__
+
+###END class UniformTypeDataObject
