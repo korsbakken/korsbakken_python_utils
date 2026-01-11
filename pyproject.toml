@@ -1,6 +1,6 @@
 [project]
 name = "korsbakken-python-utils"
-version = "0.2.0"
+version = "0.3.0"
 description = "Python utility code and helper functions by and for myself"
 readme = "README.md"
 license = "AGPL-3.0-or-later"
@@ -11,7 +11,7 @@ license-files = [
 authors = [
     { name = "Jan Ivar Korsbakken", email = "janko@cicero.oslo.no" }
 ]
-requires-python = ">=3.14"
+requires-python = ">=3.13"
 dependencies = []
 
 [build-system]
