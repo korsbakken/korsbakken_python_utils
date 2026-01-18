@@ -1,6 +1,6 @@
 [project]
 name = "korsbakken-python-utils"
-version = "0.4.0"
+version = "0.5.0"
 description = "Python utility code and helper functions by and for myself"
 readme = "README.md"
 license = "AGPL-3.0-or-later"
