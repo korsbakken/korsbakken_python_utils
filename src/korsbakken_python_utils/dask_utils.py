@@ -76,7 +76,7 @@ class _UniqueProgressBar(ProgressBar):
     @classmethod
     def clear_instances(cls):
         """Clear all stored _UniqueProgressBar instances."""
-        for _params, _instance in cls._instances.items():
+        for _params, _instance in tuple(cls._instances.items()):
             _instance.unregister()
             del cls._instances[_params]
     ###END def clear_instances
