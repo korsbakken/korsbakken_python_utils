@@ -1,6 +1,6 @@
 [project]
 name = "korsbakken-python-utils"
-version = "0.3.0"
+version = "0.4.0"
 description = "Python utility code and helper functions by and for myself"
 readme = "README.md"
 license = "AGPL-3.0-or-later"
@@ -14,11 +14,19 @@ authors = [
 requires-python = ">=3.13"
 dependencies = []
 
+[project.optional-dependencies]
+dask = [
+    "dask[diagnostics]>=2026.1.1",
+]
+
 [build-system]
 requires = ["uv_build>=0.9.18,<0.10.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
+dev = [
+    "ipython>=9.9.0",
+]
 test = [
     "hypothesis>=6.148.7",
     "pytest>=9.0.2",
