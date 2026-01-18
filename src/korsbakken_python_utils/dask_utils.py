@@ -35,3 +35,4 @@ def get_registered_progress_bars() -> set[ProgressBar]:
         ):
             pb_set.add(_callback_func.__self__)
     return pb_set
+###END def get_registered_progress_bars
